@@ -10,27 +10,26 @@ class Account {
     static hasMany = [authorities: Authority]
     static belongsTo = [Authority]
 
-/** O */
+/**アカウント名*/
     String name
-/** [AhX */
+/**メールアドレス*/
     String email
-/** pX[h */
+/**パスワード*/
     String passwd
-/** a */
+/**えさ*/
     int esa
-/** ̗ */
+/**ヒットポイント*/
     int hp
-/**  */
+/**勝利数*/
     int won
 /** sk */
     int lost
-/**  */
+/**死亡フラグ*/
     boolean deadflg
-/** O */
+/**戦績*/
     String log 
     
-    //String animal    //defႾ߂ۂ
-    Animal animal //ł܂g΂ȂƂc
+    Animal animal //
 
     /** plain password to create a MD5 password */
     String pass = '[secret]'
