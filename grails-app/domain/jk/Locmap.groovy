@@ -2,7 +2,7 @@ package jk
 
 
 /** マップ */
-class Map {
+class Locmap {
 	
 	/** x座標 */
 	int x

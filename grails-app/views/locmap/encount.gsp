@@ -1,4 +1,4 @@
-<%@ page import="jk.Map" %>
+<%@ page import="jk.Locmap" %>
 <html>
     <head>
             <meta name="layout" content="top" />

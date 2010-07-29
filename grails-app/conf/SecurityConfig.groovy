@@ -10,6 +10,6 @@ security {
     authorityDomainClass = "jk.Authority"
     requestMapClass = "jk.Requestmap"
     
-    defaultTargetUrl = '/map/meta'
+    defaultTargetUrl = '/locmap/meta'
     afterLogoutUrl = '/'
 }

@@ -4,7 +4,7 @@ import org.springframework.security.ui.AbstractProcessingFilter
 import org.springframework.security.ui.webapp.AuthenticationProcessingFilter
 
 
-class MapController {
+class LocmapController {
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
     def meta = {
         def username = session[AuthenticationProcessingFilter.SPRING_SECURITY_LAST_USERNAME_KEY]
@@ -26,7 +26,7 @@ class MapController {
         }
         else { 
             // 現在地を[0,0]にする
-            def mapInstance = Map.findByObjectId(params.id)
+            def mapInstance = Locmap.findByObjectId(params.id)
             mapInstance.x = 0
             mapInstance.y = 0
             mapInstance.save(flush: true)
@@ -70,9 +70,9 @@ class MapController {
                 accountInstance.log = accountInstance.log.getAt(index..-1)
             }
             //餌がなくなっていた場合に餌を追加
-            def mapInstance = Map.findByObject("esa")
+            def mapInstance = Locmap.findByObject("esa")
             if (!mapInstance) {
-                mapInstance = new Map()
+                mapInstance = new Locmap()
                 mapInstance.x = Math.floor(Math.random()*4).toInteger() + 1
                 mapInstance.y = Math.floor(Math.random()*4).toInteger() + 1
                 mapInstance.object = "esa"
@@ -99,9 +99,9 @@ class MapController {
             
 
             //プレイヤーの現在地を取得する
-            def mapInstance2 = Map.findByObjectId(params.id)
+            def mapInstance2 = Locmap.findByObjectId(params.id)
             if (!mapInstance2) {
-                flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'account.label', default: 'Map'), params.id])}"
+                flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'account.label', default: 'Locmap'), params.id])}"
                 redirect(action: "home")
             }
             //巣から出てきたとき
@@ -135,13 +135,13 @@ class MapController {
     def move = {
         def accountInstance = Account.get(params.id)
         if (!accountInstance) {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'account.label', default: 'Map'), params.id])}"
+            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'account.label', default: 'Locmap'), params.id])}"
             redirect(action: "home")
         }
 
-        def mapInstance = Map.findByObjectId(params.id)
+        def mapInstance = Locmap.findByObjectId(params.id)
         if (!mapInstance) {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'account.label', default: 'Map'), params.id])}"
+            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'account.label', default: 'Locmap'), params.id])}"
             redirect(action: "home")
         }
 		if(!accountInstance.deadflg){
@@ -157,7 +157,7 @@ class MapController {
         mapInstance.x = (mapInstance.x - 1 + params.x.toInteger()) % 4 + 1
         mapInstance.y = (mapInstance.y - 1 + params.y.toInteger()) % 4 + 1
         
-        def mapInstance2 = Map.find("from Map as a where a.x='${mapInstance.x}' and a.y='${mapInstance.y}'")
+        def mapInstance2 = Locmap.find("from Locmap as a where a.x='${mapInstance.x}' and a.y='${mapInstance.y}'")
         if (mapInstance2) {
             mapInstance.save(flush: true)
             if(mapInstance2.object == "Account" && mapInstance2.x != 0 && mapInstance2.y != 0) {
@@ -190,7 +190,7 @@ class MapController {
     def eat = {
         def accountInstance = Account.get(params.id)
         if (!accountInstance) {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'account.label', default: 'Map'), params.id])}"
+            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'account.label', default: 'Locmap'), params.id])}"
             redirect(action: "home")
         }
         def date = new Date().toString()
@@ -210,7 +210,7 @@ class MapController {
         def accountInstance2 = Account.get(params.enemyId)
         
         if (!(accountInstance && accountInstance2) ) {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'map.label', default: 'Map'), params.id])}"
+            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'map.label', default: 'Locmap'), params.id])}"
             redirect(action: "list")
         }
         else {
@@ -230,11 +230,11 @@ class MapController {
         }
     
     def encount = {
-                 def mapInstance = Map.findByObjectId(params.myId)
-		         def mapInstance2 = Map.findByObjectId(params.enemyId)
+                 def mapInstance = Locmap.findByObjectId(params.myId)
+		         def mapInstance2 = Locmap.findByObjectId(params.enemyId)
                 
 			        if (!(mapInstance && mapInstance2) ) {
-			            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'account.label', default: 'Map'), params.id])}"
+			            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'account.label', default: 'Locmap'), params.id])}"
 			            redirect(action: "home")
 			        }
            
@@ -243,7 +243,7 @@ class MapController {
                 def accountInstance2 = Account.get(params.enemyId)
                 int hako
                 if (!accountInstance && accountInstance2) {
-                                flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'map.label', default: 'Map'), params.id])}"
+                                flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'map.label', default: 'Locmap'), params.id])}"
                                     redirect(action: "list")
                                 }
                             else {
@@ -427,19 +427,19 @@ class MapController {
 
     def list = {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [mapInstanceList: Map.list(params), mapInstanceTotal: Map.count()]
+        [mapInstanceList: Locmap.list(params), mapInstanceTotal: Locmap.count()]
     }
 
     def create = {
-        def mapInstance = new Map()
+        def mapInstance = new Locmap()
         mapInstance.properties = params
         return [mapInstance: mapInstance]
     }
 
     def save = {
-        def mapInstance = new Map(params)
+        def mapInstance = new Locmap(params)
         if (mapInstance.save(flush: true)) {
-            flash.message = "${message(code: 'default.created.message', args: [message(code: 'map.label', default: 'Map'), mapInstance.id])}"
+            flash.message = "${message(code: 'default.created.message', args: [message(code: 'map.label', default: 'Locmap'), mapInstance.id])}"
             redirect(action: "show", id: mapInstance.id)
         }
         else {
@@ -448,9 +448,9 @@ class MapController {
     }
 
     def show = {
-        def mapInstance = Map.get(params.id)
+        def mapInstance = Locmap.get(params.id)
         if (!mapInstance) {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'map.label', default: 'Map'), params.id])}"
+            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'map.label', default: 'Locmap'), params.id])}"
             redirect(action: "list")
         }
         else {
@@ -459,9 +459,9 @@ class MapController {
     }
 
     def edit = {
-        def mapInstance = Map.get(params.id)
+        def mapInstance = Locmap.get(params.id)
         if (!mapInstance) {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'map.label', default: 'Map'), params.id])}"
+            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'map.label', default: 'Locmap'), params.id])}"
             redirect(action: "list")
         }
         else {
@@ -470,20 +470,20 @@ class MapController {
     }
 
     def update = {
-        def mapInstance = Map.get(params.id)
+        def mapInstance = Locmap.get(params.id)
         if (mapInstance) {
             if (params.version) {
                 def version = params.version.toLong()
                 if (mapInstance.version > version) {
                     
-                    mapInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'map.label', default: 'Map')] as Object[], "Another user has updated this Map while you were editing")
+                    mapInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'map.label', default: 'Locmap')] as Object[], "Another user has updated this Locmap while you were editing")
                     render(view: "edit", model: [mapInstance: mapInstance])
                     return
                 }
             }
             mapInstance.properties = params
             if (!mapInstance.hasErrors() && mapInstance.save(flush: true)) {
-                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'map.label', default: 'Map'), mapInstance.id])}"
+                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'map.label', default: 'Locmap'), mapInstance.id])}"
                 redirect(action: "show", id: mapInstance.id)
             }
             else {
@@ -491,26 +491,26 @@ class MapController {
             }
         }
         else {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'map.label', default: 'Map'), params.id])}"
+            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'map.label', default: 'Locmap'), params.id])}"
             redirect(action: "list")
         }
     }
 
     def delete = {
-        def mapInstance = Map.get(params.id)
+        def mapInstance = Locmap.get(params.id)
         if (mapInstance) {
             try {
                 mapInstance.delete(flush: true)
-                flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'map.label', default: 'Map'), params.id])}"
+                flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'map.label', default: 'Locmap'), params.id])}"
                 redirect(action: "list")
             }
             catch (org.springframework.dao.DataIntegrityViolationException e) {
-                flash.message = "${message(code: 'default.not.deleted.message', args: [message(code: 'map.label', default: 'Map'), params.id])}"
+                flash.message = "${message(code: 'default.not.deleted.message', args: [message(code: 'map.label', default: 'Locmap'), params.id])}"
                 redirect(action: "show", id: params.id)
             }
         }
         else {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'map.label', default: 'Map'), params.id])}"
+            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'map.label', default: 'Locmap'), params.id])}"
             redirect(action: "list")
         }
     }

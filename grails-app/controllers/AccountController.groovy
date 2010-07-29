@@ -1,6 +1,6 @@
 //package jk
 import jk.Account
-import jk.Map
+import jk.Locmap
 import jk.Authority
 
 /**
@@ -147,7 +147,7 @@ class AccountController {
         account.passwd = authenticateService.encodePassword(params.passwd)
         if (account.save()) {
             addRoles(account)
-            def mobj = new Map()
+            def mobj = new Locmap()
             mobj.objectId = account.id
             mobj.x = 0
             mobj.y = 0

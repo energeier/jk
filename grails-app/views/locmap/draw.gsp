@@ -1,4 +1,4 @@
-<%@ page import="jk.Map" %>
+<%@ page import="jk.Locmap" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
