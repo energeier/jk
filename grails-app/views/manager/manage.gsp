@@ -35,7 +35,7 @@
                     
                         <li class="controller"><a href="/jk/battle/index">戦闘管理</a></li>
                     
-                        <li class="controller"><a href="/jk/map/index">マップ管理</a></li>
+                        <li class="controller"><a href="/jk/locmap/index">マップ管理</a></li>
                         
                         <li class="controller"><a href="/jk/authority/index">権限管理</a></li>
                     
