@@ -30,19 +30,10 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="animal"><g:message code="battle.animal.label" default="Animal" /></label>
+                                    <label for="myId"><g:message code="battle.myId.label" default="My Id" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: battleInstance, field: 'animal', 'errors')}">
-                                    <g:select name="animal.id" from="${jk.Animal.list()}" optionKey="id" value="${battleInstance?.animal?.id}"  />
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="revise"><g:message code="battle.revise.label" default="Revise" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: battleInstance, field: 'revise', 'errors')}">
-                                    <g:textField name="revise" value="${fieldValue(bean: battleInstance, field: 'revise')}" />
+                                <td valign="top" class="value ${hasErrors(bean: battleInstance, field: 'myId', 'errors')}">
+                                    <g:textField name="myId" value="${fieldValue(bean: battleInstance, field: 'myId')}" />
                                 </td>
                             </tr>
                         
@@ -52,6 +43,15 @@
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: battleInstance, field: 'toId', 'errors')}">
                                     <g:textField name="toId" value="${fieldValue(bean: battleInstance, field: 'toId')}" />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="revise"><g:message code="battle.revise.label" default="Revise" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: battleInstance, field: 'revise', 'errors')}">
+                                    <g:textField name="revise" value="${fieldValue(bean: battleInstance, field: 'revise')}" />
                                 </td>
                             </tr>
                         

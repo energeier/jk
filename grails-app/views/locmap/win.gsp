@@ -127,7 +127,7 @@
 	<body leftmargin="0" topmargin="0">
 			<img src="/jk/images/kusa.jpg" width="1520px" height="820px" style="position:absolute; top:0px; left:0px; z-index:1">
 			<div style="position:absolute; top:10px; left:10px; z-index:2; width:100%">
-	<g:form action="map" controller="map" method="post" >
+	<g:form action="map" controller="locmap" method="post" >
 	<%
 	int hande1 = 0
 	int hande2 = 0

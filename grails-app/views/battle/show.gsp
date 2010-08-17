@@ -30,16 +30,9 @@
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="battle.animal.label" default="Animal" /></td>
+                            <td valign="top" class="name"><g:message code="battle.myId.label" default="My Id" /></td>
                             
-                            <td valign="top" class="value"><g:link controller="animal" action="show" id="${battleInstance?.animal?.id}">${battleInstance?.animal?.encodeAsHTML()}</g:link></td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="battle.revise.label" default="Revise" /></td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean: battleInstance, field: "revise")}</td>
+                            <td valign="top" class="value">${fieldValue(bean: battleInstance, field: "myId")}</td>
                             
                         </tr>
                     
@@ -47,6 +40,13 @@
                             <td valign="top" class="name"><g:message code="battle.toId.label" default="To Id" /></td>
                             
                             <td valign="top" class="value">${fieldValue(bean: battleInstance, field: "toId")}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="battle.revise.label" default="Revise" /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: battleInstance, field: "revise")}</td>
                             
                         </tr>
                     

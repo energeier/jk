@@ -65,6 +65,15 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
+                                  <label for="encountimg"><g:message code="animal.encountimg.label" default="Encountimg" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: animalInstance, field: 'encountimg', 'errors')}">
+                                    <g:textField name="encountimg" value="${animalInstance?.encountimg}" />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
                                   <label for="img"><g:message code="animal.img.label" default="Img" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: animalInstance, field: 'img', 'errors')}">

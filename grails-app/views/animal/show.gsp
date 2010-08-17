@@ -56,6 +56,13 @@
                         </tr>
                     
                         <tr class="prop">
+                            <td valign="top" class="name"><g:message code="animal.encountimg.label" default="Encountimg" /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: animalInstance, field: "encountimg")}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
                             <td valign="top" class="name"><g:message code="animal.img.label" default="Img" /></td>
                             
                             <td valign="top" class="value">${fieldValue(bean: animalInstance, field: "img")}</td>

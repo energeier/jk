@@ -138,7 +138,7 @@
 	
 	%>
 <div id="wrapper">
-	<g:form action="home" controller="map" method="post">
+	<g:form action="home" controller="locmap" method="post">
 	<div id="header">
 		<span class="moji2">（自分）${accountInstance.name}対（相手）${accountInstance2.name}</span><br>
 		<span class="moji2">（自分）HP${params.hantei1}<font size="5" color="red">+10+${hande1}</font><br> 対<br>（相手）HP${params.hantei2}

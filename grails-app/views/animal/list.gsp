@@ -24,6 +24,8 @@
                         
                             <g:sortableColumn property="id" title="${message(code: 'animal.id.label', default: 'Id')}" />
                         
+                            <g:sortableColumn property="encountimg" title="${message(code: 'animal.encountimg.label', default: 'Encountimg')}" />
+                        
                             <g:sortableColumn property="img" title="${message(code: 'animal.img.label', default: 'Img')}" />
                         
                             <g:sortableColumn property="name" title="${message(code: 'animal.name.label', default: 'Name')}" />
@@ -35,6 +37,8 @@
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                         
                             <td><g:link action="show" id="${animalInstance.id}">${fieldValue(bean: animalInstance, field: "id")}</g:link></td>
+                        
+                            <td>${fieldValue(bean: animalInstance, field: "encountimg")}</td>
                         
                             <td>${fieldValue(bean: animalInstance, field: "img")}</td>
                         

@@ -119,43 +119,9 @@
 			</style>
     </head>
 	<BODY leftmargin="0" topmargin="0">
-			<%
-				switch(accountInstance2.animal.name){
-					case("鹿"):
-							%>
-							<IMG src="/jk/images/sika2.jpg" width="100%" height="100%"
+			<img src="/jk/images/${accountInstance2.animal.encountimg}" width="100%" height="100%"
 							style="position:absolute; top:0px; left:0px; z-index:1">
-							<%
-						break
-					case("兎"):
-						%>
-						<IMG src="/jk/images/usagi2.jpg" width="100%" height="100%"
-						style="position:absolute; top:0px; left:0px; z-index:1">
-						<%
-						break
-					case("虎"):
-						%>
-						<IMG src="/jk/images/tora2.jpg" width="100%" height="100%"
-						style="position:absolute; top:0px; left:0px; z-index:1">
-						<%
-						break	
-					case("熊"):
-						%>
-						<IMG src="/jk/images/kuma2.jpg" width="100%" height="100%"
-						style="position:absolute; top:0px; left:0px; z-index:1">	
-						<%
-						break
-					case("猫"):
-					%>
-						<IMG src="/jk/images/neko2.jpg" width="100%" height="100%"
-						style="position:absolute; top:0px; left:0px; z-index:1">
-					<%
-						break
-					default:
-						break
-
-				}
-			%>
+							
 	<DIV style="position:absolute; top:10px; left:10px; z-index:2">
 
 	

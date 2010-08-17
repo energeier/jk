@@ -2,13 +2,13 @@ package jk
 
 class Battle {
 
-	static belongsTo = [animal:Animal]
-	
-	int toId
-	int revise
+    int myId
+    int toId
+    int revise
 
     static constraints = {
-	toId(min:1)
-	revise(matches:"\\d+")
+    myId(min:1)
+    toId(min:1)
+    revise(matches:"\\d+")
     }
 }

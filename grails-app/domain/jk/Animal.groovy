@@ -1,20 +1,22 @@
 package jk
 
-/** å‹•ç‰© */
+/** “®•¨ */
 class Animal {
 
-	static hasMany = [account:Account,battle:Battle]
-	
-	/** ç¨®é¡ */
-	String name
-	/** ç”»åƒãƒ•ã‚¡ã‚¤ãƒ« */
-	String img
-	
-	
+    static hasMany = [account:Account,battle:Battle]
+    
+    /** í—Ş */
+    String name
+    /** ‰æ‘œƒtƒ@ƒCƒ‹ */
+    String img
+    /** ‘˜‹ö‰æ‘œƒtƒ@ƒCƒ‹ */
+    String encountimg
+    
+    
     static constraints = {
     }
-	String toString(){
-		return name + " : " + id
-	}
+    String toString(){
+        return name
+    }
 
 }

@@ -4,6 +4,7 @@ import org.springframework.security.ui.AbstractProcessingFilter
 import org.springframework.security.ui.webapp.AuthenticationProcessingFilter
 
 
+
 class LocmapController {
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
     def meta = {
@@ -250,90 +251,16 @@ class LocmapController {
                             [accountInstance: accountInstance,accountInstance2:accountInstance2]
                                 }
                         
-                            String animal1 = accountInstance.animal.name
-                            String animal2 = accountInstance2.animal.name
-                            int hande = 0
-
-                                        switch(animal1){
-                                            case("鹿"):
-                                                switch(animal2){
-                                                    case("熊"):    
-                                                        hande +=5
-                                                        break
-                                                    case("虎"):    
-                                                        hande -=5
-                                                        break
-                                                    default:
-                                                         break
-                                                }
-                                                break
-                                            case("兎"):
-                                                switch(animal2){
-                                                    case("虎"):    
-                                                        hande +=5
-                                                        break
-                                                    case("熊"):
-                                                        hande +=10
-                                                        break
-                                                    case("猫"):
-                                                        hande -=25
-                                                        break
-                                                    default:
-                                                         break
-                                                }
-                                                break
-                                            case("虎"):
-                                                switch(animal2){
-                                                    case("鹿"):    
-                                                        hande +=5
-                                                        break
-                                                    case("兎"):    
-                                                        hande -=5
-                                                        break
-                                                    case("熊"):
-                                                        hande -=5
-                                                        break
-                                                    case("猫"):
-                                                        hande +=10
-                                                        break
-                                                    default:
-                                                        break
-                                                }
-                                                break    
-                                            case("熊"):
-                                                switch(animal2){
-                                                    case("鹿"):    
-                                                        hande -=5
-                                                        break
-                                                    case("兎"):    
-                                                        hande -=10
-                                                        break
-                                                    case("虎"):    
-                                                        hande +=5
-                                                        break
-                                                    case("猫"):
-                                                        hande +=10
-                                                        break
-                                                    default:
-                                                         break
-                                                }
-                                                break
-                                            case("猫"):
-                                                switch(animal2){
-                                                    case("兎"):    
-                                                        hande +=25
-                                                        break
-                                                    case("虎"):    
-                                                        hande -=10
-                                                        break
-                                                    case("熊"):
-                                                        hande -=10
-                                                        break
-                                                    default:
-                                                         break
-                                                }
-                                                break
-                                        }
+    						int firstanimalId = accountInstance.animal.id
+    						int enemyanimalId = accountInstance2.animal.id
+    						def fbi = Battle.findByMyIdAndToId(firstanimalId,enemyanimalId)
+    						println fbi.revise
+                            int hande
+    						if(fbi == null)  hande = 0
+    						else {
+    							hande = fbi.revise
+    						}
+    						println hande
 
                                 hako = accountInstance.hp + hande + 10
                                     if(hako == accountInstance2.hp){

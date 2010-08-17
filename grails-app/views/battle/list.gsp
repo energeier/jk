@@ -24,11 +24,11 @@
                         
                             <g:sortableColumn property="id" title="${message(code: 'battle.id.label', default: 'Id')}" />
                         
-                            <th><g:message code="battle.animal.label" default="Animal" /></th>
-                        
-                            <g:sortableColumn property="revise" title="${message(code: 'battle.revise.label', default: 'Revise')}" />
+                            <g:sortableColumn property="myId" title="${message(code: 'battle.myId.label', default: 'My Id')}" />
                         
                             <g:sortableColumn property="toId" title="${message(code: 'battle.toId.label', default: 'To Id')}" />
+                        
+                            <g:sortableColumn property="revise" title="${message(code: 'battle.revise.label', default: 'Revise')}" />
                         
                         </tr>
                     </thead>
@@ -38,11 +38,11 @@
                         
                             <td><g:link action="show" id="${battleInstance.id}">${fieldValue(bean: battleInstance, field: "id")}</g:link></td>
                         
-                            <td>${fieldValue(bean: battleInstance, field: "animal")}</td>
-                        
-                            <td>${fieldValue(bean: battleInstance, field: "revise")}</td>
+                            <td>${fieldValue(bean: battleInstance, field: "myId")}</td>
                         
                             <td>${fieldValue(bean: battleInstance, field: "toId")}</td>
+                        
+                            <td>${fieldValue(bean: battleInstance, field: "revise")}</td>
                         
                         </tr>
                     </g:each>
